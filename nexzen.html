@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Nexzen Ventures</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
+
+/* ====== BG IMAGE ====== */
+body{
+  background:#0b0a1a;
+  background-image:url('as.jpg');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  color:#e2e8f0;overflow-x:hidden;min-height:100vh;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(11,10,26,0.6);
+  pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(236,72,153,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(249,115,22,.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(16,185,129,.06) 0%, transparent 50%);
+  animation:bgShift 20s ease-in-out infinite alternate;
+  pointer-events:none;z-index:0;
+}
+@keyframes bgShift{
+  0%{transform:translate(0,0) rotate(0deg)}
+  33%{transform:translate(2%,-2%) rotate(1deg)}
+  66%{transform:translate(-1%,1%) rotate(-1deg)}
+  100%{transform:translate(0,0) rotate(0deg)}
+}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.03)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ec4899,#f97316);border-radius:10px}
+
+/* ====== SPLASH ====== */
+#splash{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#0b0a1a;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:9999;transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+}
+#splash.hide{opacity:0;transform:scale(1.12) rotate(1deg);pointer-events:none}
+
+.splash-particles{position:absolute;width:100%;height:100%;overflow:hidden}
+.splash-particles span{
+  position:absolute;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  animation:spFloat linear infinite;
+}
+.splash-particles span:nth-child(1){width:60px;height:60px;left:5%;top:10%;animation-duration:14s;animation-delay:0s;background:radial-gradient(circle,rgba(236,72,153,.3),transparent)}
+.splash-particles span:nth-child(2){width:40px;height:40px;left:30%;top:70%;animation-duration:18s;animation-delay:1s;background:radial-gradient(circle,rgba(249,115,22,.2),transparent)}
+.splash-particles span:nth-child(3){width:80px;height:80px;left:60%;top:5%;animation-duration:12s;animation-delay:2s;background:radial-gradient(circle,rgba(16,185,129,.2),transparent)}
+.splash-particles span:nth-child(4){width:35px;height:35px;left:80%;top:65%;animation-duration:20s;animation-delay:.5s;background:radial-gradient(circle,rgba(244,114,182,.2),transparent)}
+.splash-particles span:nth-child(5){width:50px;height:50px;left:50%;top:40%;animation-duration:16s;animation-delay:1.5s;background:radial-gradient(circle,rgba(251,191,36,.2),transparent)}
+.splash-particles span:nth-child(6){width:25px;height:25px;left:15%;top:85%;animation-duration:11s;animation-delay:3s;background:radial-gradient(circle,rgba(236,72,153,.2),transparent)}
+@keyframes spFloat{
+  0%{transform:translateY(0) scale(1);opacity:.3}
+  50%{transform:translateY(-40vh) scale(1.2);opacity:.6}
+  100%{transform:translateY(-90vh) scale(.8);opacity:0}
+}
+
+.splash-rings{position:relative;z-index:2;width:140px;height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.splash-rings .r1{
+  position:absolute;width:140px;height:140px;border-radius:50%;
+  border:2px solid transparent;
+  border-top:2px solid rgba(236,72,153,.5);
+  border-right:2px solid rgba(249,115,22,.3);
+  animation:spinRing 2.2s cubic-bezier(.4,0,.2,1) infinite;
+}
+.splash-rings .r2{
+  position:absolute;width:108px;height:108px;border-radius:50%;
+  border:2px solid transparent;
+  border-bottom:2px solid rgba(16,185,129,.4);
+  border-left:2px solid rgba(244,114,182,.3);
+  animation:spinRing 2.8s cubic-bezier(.4,0,.2,1) infinite reverse;
+}
+.splash-rings .r3{
+  position:absolute;width:76px;height:76px;border-radius:50%;
+  border:1.5px solid transparent;
+  border-top:1.5px solid rgba(251,191,36,.5);
+  border-left:1.5px solid rgba(236,72,153,.3);
+  animation:spinRing 1.6s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes spinRing{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+.splash-center-logo{
+  position:relative;z-index:3;width:60px;height:60px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(30px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:900;color:#fff;
+  letter-spacing:2px;
+  border:1.5px solid rgba(255,255,255,.12);
+  box-shadow:0 0 50px rgba(236,72,153,.12);
+  animation:sCenterPulse 2.5s ease-in-out infinite;
+}
+@keyframes sCenterPulse{
+  0%,100%{box-shadow:0 0 30px rgba(236,72,153,.1);transform:scale(1)}
+  50%{box-shadow:0 0 70px rgba(236,72,153,.25);transform:scale(1.06)}
+}
+
+.splash-title{
+  position:relative;z-index:2;font-size:32px;font-weight:900;
+  background:linear-gradient(90deg,#e2e8f0,#f472b6,#e2e8f0);
+  background-size:200% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:4px;animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.splash-sub{position:relative;z-index:2;color:rgba(255,255,255,.3);font-size:11px;letter-spacing:10px;text-transform:uppercase;margin-top:4px}
+.splash-bar-wrap{position:relative;z-index:2;width:180px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;margin-top:20px;overflow:hidden}
+.splash-bar{height:100%;width:0%;background:linear-gradient(90deg,#ec4899,#f97316,#10b981);border-radius:10px;animation:loadBar 2.6s ease-in-out forwards}
+@keyframes loadBar{0%{width:0%}30%{width:20%}55%{width:50%}75%{width:75%}100%{width:100%}}
+.splash-load{position:relative;z-index:2;color:rgba(255,255,255,.2);font-size:10px;letter-spacing:6px;text-transform:uppercase;margin-top:8px}
+
+/* ====== APP ====== */
+#app{display:none;position:relative;z-index:1;padding-bottom:30px}
+#app.active{display:block}
+
+/* ====== HOME HEADER ====== */
+.hdr-home{
+  position:relative;padding:40px 20px 50px;text-align:center;overflow:hidden;
+  background:#1a1a2e;
+  border-radius:0 0 50px 50px;
+  margin-bottom:20px;
+  border-bottom:3px solid rgba(236,72,153,.3);
+}
+
+.logo-cont{
+  position:relative;z-index:2;display:inline-flex;flex-direction:column;align-items:center;
+  padding:10px 20px;border-radius:30px;
+  background:#252540;
+  border:1.5px solid rgba(255,255,255,.12);
+  cursor:pointer;transition:all .35s cubic-bezier(.23,1,.32,1);margin-bottom:8px;
+}
+.logo-cont:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 50px rgba(236,72,153,.15)}
+.logo-cont:active{transform:scale(.95)}
+.logo-text{font-size:32px;font-weight:900;color:#fff;letter-spacing:3px;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.2)}
+.logo-dots{display:flex;gap:5px;margin-top:3px}
+.logo-dots span{width:5px;height:5px;border-radius:50%;display:block;animation:dotPulse 2s ease-in-out infinite}
+.logo-dots .d1{background:#fbbf24;animation-delay:0s}
+.logo-dots .d2{background:#34d399;animation-delay:.3s}
+.logo-dots .d3{background:#f472b6;animation-delay:.6s}
+.logo-dots .d4{background:#ec4899;animation-delay:.9s}
+@keyframes dotPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+.hdr-home h1{position:relative;z-index:2;font-size:26px;font-weight:800;color:#fff;letter-spacing:2px;text-shadow:0 2px 20px rgba(0,0,0,.1)}
+.hdr-home .sub{position:relative;z-index:2;color:rgba(255,255,255,.5);font-size:11px;letter-spacing:5px;text-transform:uppercase;margin-top:3px}
+.hdr-home .badge-row{position:relative;z-index:2;display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
+.hdr-home .badge-row .chip{
+  display:inline-flex;align-items:center;gap:5px;padding:6px 16px;border-radius:30px;
+  background:#2a2a45;
+  font-size:10px;color:rgba(255,255,255,.75);
+  letter-spacing:1px;border:1px solid rgba(255,255,255,.1);
+  animation:fadeUp .6s ease both;
+}
+.hdr-home .badge-row .chip:nth-child(1){animation-delay:.1s}
+.hdr-home .badge-row .chip:nth-child(2){animation-delay:.25s}
+.hdr-home .badge-row .chip:nth-child(3){animation-delay:.4s}
+
+/* ====== SECTION ====== */
+.sec{padding:25px 18px}
+.sec-header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding:0 4px;
+}
+.sec-header h2{
+  font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,#ec4899,#f472b6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:.5px;position:relative;
+}
+.sec-header h2::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:30px;height:3px;
+  background:linear-gradient(90deg,#ec4899,transparent);
+  border-radius:10px;
+}
+.sec-header .plan-count{
+  font-size:10px;color:rgba(255,255,255,.35);background:#1f1f38;
+  border:1px solid rgba(255,255,255,.06);padding:5px 16px;border-radius:30px;
+  letter-spacing:1.5px;
+}
+
+/* ====== PLAN CARDS ====== */
+.row{
+  display:flex;gap:20px;overflow-x:auto;
+  padding:10px 0 25px;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.row::-webkit-scrollbar{height:3px}
+.row::-webkit-scrollbar-thumb{background:rgba(236,72,153,.2);border-radius:10px}
+
+.crd-wrap{
+  min-width:270px;max-width:270px;flex-shrink:0;scroll-snap-align:start;
+  border-radius:28px;padding:2px;
+  background:linear-gradient(135deg,rgba(236,72,153,.4),rgba(249,115,22,.2));
+  transition:all .4s cubic-bezier(.23,1,.32,1);
+  cursor:pointer;position:relative;overflow:hidden;
+}
+.crd-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.05));
+  pointer-events:none;border-radius:28px;
+}
+.crd-wrap:hover{transform:translateY(-8px) scale(1.02)}
+.crd-wrap:hover .crd-glow{opacity:1}
+.crd-wrap:active{transform:translateY(-2px) scale(.97)}
+
+.crd-glow{
+  position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at 50% 50%,rgba(236,72,153,.08),transparent 60%);
+  opacity:0;transition:opacity .6s;pointer-events:none;z-index:0;
+}
+
+.crd-wrap[data-border="sunset"]{background:linear-gradient(135deg,rgba(249,115,22,.4),rgba(236,72,153,.2))}
+.crd-wrap[data-border="mint"]{background:linear-gradient(135deg,rgba(16,185,129,.4),rgba(14,165,233,.2))}
+.crd-wrap[data-border="rose"]{background:linear-gradient(135deg,rgba(244,63,94,.4),rgba(251,146,60,.2))}
+.crd-wrap[data-border="gold"]{background:linear-gradient(135deg,rgba(245,158,11,.4),rgba(251,191,36,.2))}
+.crd-wrap[data-border="coral"]{background:linear-gradient(135deg,rgba(255,107,107,.4),rgba(255,169,77,.2))}
+.crd-wrap[data-border="sky"]{background:linear-gradient(135deg,rgba(56,189,248,.4),rgba(236,72,153,.2))}
+.crd-wrap[data-border="emerald"]{background:linear-gradient(135deg,rgba(52,211,153,.4),rgba(236,72,153,.2))}
+.crd-wrap[data-border="pink"]{background:linear-gradient(135deg,rgba(244,114,182,.4),rgba(167,139,250,.2))}
+.crd-wrap[data-border="amber"]{background:linear-gradient(135deg,rgba(217,119,6,.4),rgba(245,158,11,.2))}
+.crd-wrap[data-border="ruby"]{background:linear-gradient(135deg,rgba(220,38,38,.4),rgba(244,63,94,.2))}
+.crd-wrap[data-border="platinum"]{background:linear-gradient(135deg,rgba(148,163,184,.4),rgba(203,213,225,.2))}
+
+.crd{
+  background:#1e1e3a;
+  border-radius:26px;padding:28px 22px 22px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  min-height:240px;border:1px solid rgba(255,255,255,.06);
+}
+
+.crd .plan-icon{
+  position:absolute;top:14px;right:18px;font-size:32px;opacity:.3;
+  transition:all .4s cubic-bezier(.23,1,.32,1);
+  filter:drop-shadow(0 4px 20px rgba(236,72,153,.1));
+}
+.crd-wrap:hover .plan-icon{opacity:.7;transform:scale(1.15) rotate(8deg) translateY(-2px)}
+
+.crd .nm{
+  font-size:17px;font-weight:800;color:#e2e8f0;
+  margin-bottom:16px;letter-spacing:.5px;text-align:center;
+  position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.crd .invest-box{
+  position:relative;z-index:1;
+  background:#252540;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;padding:16px 14px;
+  margin-bottom:14px;text-align:center;
+}
+.crd .invest-box .invest-label{
+  font-size:9px;color:rgba(255,255,255,.3);
+  text-transform:uppercase;letter-spacing:3px;display:block;margin-bottom:5px;
+}
+.crd .invest-box .invest-value{
+  font-size:28px;font-weight:900;color:#f1f5f9;
+  letter-spacing:-.5px;
+}
+.crd .invest-box .invest-currency{font-size:14px;font-weight:500;color:rgba(255,255,255,.4)}
+
+.crd .info-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:0 2px;position:relative;z-index:1}
+.crd .info-row .icon{width:24px;font-size:13px;text-align:center;opacity:.6}
+.crd .info-row .label{font-size:11px;color:rgba(255,255,255,.35);min-width:45px;letter-spacing:.5px}
+.crd .info-row .value{font-size:14px;font-weight:700;color:#cbd5e1;letter-spacing:.2px}
+.crd .info-row .value .small{font-size:10px;font-weight:400;color:rgba(255,255,255,.3)}
+
+.crd .divider{
+  height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+  margin:10px 0 10px;position:relative;z-index:1;
+}
+.crd .dur{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:4px;position:relative;z-index:1}
+.crd .dur span{color:#ec4899;font-weight:700}
+
+.crd .crd-badge{
+  position:absolute;top:14px;left:14px;
+  font-size:9px;text-transform:uppercase;letter-spacing:1.5px;
+  padding:4px 12px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(236,72,153,.4),rgba(249,115,22,.3));
+  color:#fff;font-weight:700;z-index:2;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+/* ====== DASHBOARD HEADER ====== */
+.dash-header{
+  position:relative;
+  background:#1a1a2e;
+  padding:20px;border-radius:0 0 40px 40px;overflow:hidden;
+  display:none;margin-bottom:18px;
+  border-bottom:3px solid rgba(236,72,153,.3);
+}
+.dash-header.active{display:block}
+
+.dash-header-inner{
+  position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.dash-header-left{flex:1}
+.dash-header-left .dh-welcome{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase}
+.dash-header-left .dh-name{font-size:18px;font-weight:800;color:#fff;margin-top:2px;letter-spacing:.3px;text-shadow:0 2px 10px rgba(0,0,0,.1)}
+.dash-header-left .dh-phone{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;display:flex;align-items:center;gap:5px}
+.dash-header-left .dh-phone .dh-phone-icon{font-size:10px;opacity:.5}
+.dash-header-center{text-align:center;padding:0 6px}
+.dash-header-center .dh-diamond{font-size:30px;display:block;filter:drop-shadow(0 2px 15px rgba(236,72,153,.2));animation:dhDiamond 3s ease-in-out infinite}
+@keyframes dhDiamond{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.dash-header-center .dh-plan-name{font-size:15px;font-weight:800;color:#fff;margin-top:2px;letter-spacing:.5px}
+.dash-header-center .dh-plan-info{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
+.dash-header-center .dh-plan-info span{color:rgba(255,255,255,.85);font-weight:700}
+.dash-header-right{flex-shrink:0}
+.dash-header-right .dh-logout{
+  width:46px;height:46px;border-radius:50%;
+  background:#252540;
+  border:1.5px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s ease;
+  color:#fff;font-size:18px;box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+.dash-header-right .dh-logout:hover{transform:translateY(-3px);background:rgba(255,255,255,.15);box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.dash-header-right .dh-logout:active{transform:scale(.9)}
+
+/* ====== PLAN DETAIL CARD ====== */
+.plan-detail-card{
+  margin:18px 15px;border-radius:24px;padding:2px;
+  background:linear-gradient(135deg,rgba(236,72,153,.4),rgba(249,115,22,.2));
+  display:none;animation:fadeUp .5s ease;
+}
+.plan-detail-card.active{display:block}
+.plan-detail-card-inner{
+  background:#1e1e3a;
+  border-radius:22px;padding:24px 20px;text-align:center;
+  border:1px solid rgba(255,255,255,.06);
+}
+.plan-detail-card-inner .pdc-icon{font-size:40px;margin-bottom:8px;filter:drop-shadow(0 4px 20px rgba(236,72,153,.15));animation:dhDiamond 3s ease-in-out infinite}
+.plan-detail-card-inner .pdc-name{
+  font-size:22px;font-weight:800;
+  background:linear-gradient(135deg,#ec4899,#f472b6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:16px;letter-spacing:.5px;
+}
+.plan-detail-card-inner .pdc-row{
+  display:flex;justify-content:space-between;padding:12px 8px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:14px;
+}
+.plan-detail-card-inner .pdc-row:last-child{border-bottom:none}
+.plan-detail-card-inner .pdc-row .pdc-label{color:rgba(255,255,255,.4);font-weight:500}
+.plan-detail-card-inner .pdc-row .pdc-value{color:#e2e8f0;font-weight:700}
+
+/* ====== DASHBOARD PANELS ====== */
+.dash-panel{
+  border-radius:24px;padding:2px;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(236,72,153,.3),rgba(249,115,22,.15));
+  margin-left:15px;margin-right:15px;
+  transition:all .3s cubic-bezier(.23,1,.32,1);
+  display:none;
+}
+.dash-panel.active{display:block}
+.dash-panel:active{transform:scale(.98)}
+.dash-panel[data-color="green"]{background:linear-gradient(135deg,rgba(16,185,129,.3),rgba(14,165,233,.15))}
+.dash-panel[data-color="coral"]{background:linear-gradient(135deg,rgba(244,63,94,.3),rgba(251,146,60,.15))}
+.dash-panel[data-color="teal"]{background:linear-gradient(135deg,rgba(20,184,166,.3),rgba(6,182,212,.15))}
+
+.dash-panel-inner{
+  background:#1e1e3a;
+  border-radius:22px;padding:22px;border:1px solid rgba(255,255,255,.06);
+}
+
+.pay-container .pay-title{font-size:15px;font-weight:700;color:#34d399;margin-bottom:12px;text-align:center;letter-spacing:.5px}
+.pay-container .pay-number{
+  background:#252540;
+  border:1px solid rgba(16,185,129,.15);
+  border-radius:16px;padding:16px;text-align:center;margin-bottom:12px;
+  cursor:pointer;transition:all .3s;
+}
+.pay-container .pay-number:hover{background:rgba(16,185,129,.1);box-shadow:0 4px 25px rgba(16,185,129,.08)}
+.pay-container .pay-number:active{transform:scale(.97)}
+.pay-container .pay-number .num-label{font-size:11px;color:rgba(255,255,255,.4);display:block;margin-bottom:4px;letter-spacing:2px}
+.pay-container .pay-number .num-value{font-size:24px;font-weight:800;color:#34d399;letter-spacing:1px}
+.pay-container .pay-number .num-hint{font-size:10px;color:rgba(255,255,255,.3);margin-top:4px}
+.pay-amt-info{text-align:center;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:12px;padding:10px;background:#252540;border-radius:12px}
+.pay-amt-info strong{color:#ec4899}
+.pay-btn-upload{
+  width:100%;padding:14px;
+  background:#1f5035;
+  border:1px solid rgba(16,185,129,.2);border-radius:14px;
+  color:#fff;font-size:14px;font-weight:700;cursor:pointer;
+  text-align:center;
+  transition:all .3s;
+}
+.pay-btn-upload:hover{box-shadow:0 4px 30px rgba(16,185,129,.15);transform:translateY(-2px)}
+.pay-btn-upload:active{transform:scale(.97)}
+.pay-status{text-align:center;font-size:12px;margin-top:10px;padding:10px;border-radius:12px}
+.pay-status.pending{background:rgba(217,119,6,.1);color:#fbbf24;border:1px solid rgba(217,119,6,.15)}
+.pay-status.approved{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(16,185,129,.15)}
+
+.ac-row{display:flex;gap:12px;margin-bottom:15px}
+.ac-item{
+  flex:1;background:#252540;border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:16px;text-align:center;
+}
+.ac-item .ac-label{font-size:11px;color:rgba(255,255,255,.35);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:1.5px}
+.ac-item .ac-value{font-size:24px;font-weight:800;color:#ec4899}
+.ac-item .ac-value.green{color:#34d399}
+.ac-btns{display:flex;gap:10px}
+.ac-btns button{
+  flex:1;padding:14px;border-radius:14px;border:none;
+  font-size:14px;font-weight:700;cursor:pointer;text-align:center;
+  transition:all .3s cubic-bezier(.23,1,.32,1);
+}
+.ac-btns button:active{transform:scale(.96)}
+.ac-btns .btn-withdraw{
+  background:#2a2a50;
+  color:#fff;border:1px solid rgba(236,72,153,.2)!important;
+}
+.ac-btns .btn-withdraw:hover{box-shadow:0 4px 25px rgba(236,72,153,.15);transform:translateY(-2px)}
+.ac-btns .btn-tasks{
+  background:#252540;color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.08)!important;
+}
+.ac-btns .btn-tasks:hover{background:rgba(255,255,255,.08)}
+
+.wd-toggle-btn{
+  width:100%;padding:13px;
+  background:#2a1a2a;border:1px solid rgba(244,63,94,.15);
+  border-radius:14px;color:#fb7185;font-size:13px;font-weight:600;
+  cursor:pointer;text-align:center;transition:all .3s;
+}
+.wd-toggle-btn:hover{background:rgba(244,63,94,.12)}
+.wd-toggle-btn:active{transform:scale(.97)}
+.wd-form-inner{display:none}
+.wd-form-inner.show{display:block;animation:fadeUp .35s ease}
+.wd-status-box{
+  background:#252540;border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;padding:14px;margin-bottom:10px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.wd-status-box .wds-amount{font-weight:700;font-size:14px;color:#e2e8f0}
+.wd-status-box .wds-status{font-size:12px;padding:5px 12px;border-radius:8px}
+.wd-status-box .wds-status.pending{background:rgba(217,119,6,.1);color:#fbbf24}
+.wd-status-box .wds-status.success{background:rgba(16,185,129,.1);color:#34d399}
+
+.task-container .tc-title{font-size:15px;font-weight:700;color:#2dd4bf;margin-bottom:4px;letter-spacing:.3px}
+.task-container .tc-progress{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:15px}
+.task-card{
+  background:#252540;border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:18px;margin-bottom:12px;
+}
+.task-card .task-num{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:4px}
+.task-card .task-link{display:block;color:#ec4899;font-size:13px;font-weight:600;word-break:break-all;margin-bottom:6px;text-decoration:none}
+.task-card .task-link:hover{text-decoration:underline}
+.task-card .task-desc{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px}
+.task-card .task-status{display:inline-block;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:600}
+.task-card .task-status.pending{background:rgba(217,119,6,.1);color:#fbbf24}
+.task-card .task-status.submitted{background:rgba(16,185,129,.1);color:#34d399}
+.task-card .task-upload-btn{
+  display:block;width:100%;padding:11px;
+  background:#1f5035;border:1px solid rgba(16,185,129,.2);
+  border-radius:12px;color:#34d399;font-size:13px;font-weight:600;
+  cursor:pointer;text-align:center;margin-top:10px;transition:all .3s;
+}
+.task-card .task-upload-btn:hover{background:rgba(16,185,129,.12)}
+.task-card .task-upload-btn:active{transform:scale(.97)}
+.task-card .task-screenshot{max-width:100%;max-height:160px;border-radius:10px;margin-top:8px;cursor:pointer;display:block}
+.task-empty{text-align:center;padding:30px;color:rgba(255,255,255,.25);font-size:13px}
+.task-completed-info{text-align:center;font-size:13px;color:#34d399;padding:12px;background:rgba(16,185,129,.08);border-radius:12px;margin-top:10px;border:1px solid rgba(16,185,129,.15)}
+
+/* ====== MODALS - only background transparent for as.jpg to show ====== */
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.4);
+  z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;
+  animation:modalFade .3s ease;
+}
+.modal.active{display:flex}
+@keyframes modalFade{0%{opacity:0}100%{opacity:1}}
+
+.modal-wrap{
+  width:100%;max-width:400px;
+  border-radius:30px;padding:2px;
+  background:linear-gradient(135deg,rgba(236,72,153,.4),rgba(249,115,22,.2));
+  animation:modalSlide .35s cubic-bezier(.23,1,.32,1);
+}
+@keyframes modalSlide{0%{transform:translateY(30px) scale(.95);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+.modal-wrap .mb{
+  background:#1a1a2e; /* SOLID - transparent nahi */
+  border-radius:28px;padding:30px;position:relative;
+  max-height:90vh;overflow-y:auto;border:1px solid rgba(255,255,255,.06);
+}
+
+.mx{
+  position:absolute;top:14px;right:18px;width:32px;height:32px;
+  font-size:16px;color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.06);border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .3s;
+}
+.mx:hover{color:#fff;background:rgba(255,255,255,.1);transform:rotate(90deg)}
+
+.mh{
+  text-align:center;font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,#ec4899,#f472b6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:22px;letter-spacing:.5px;
+}
+
+.tabs{
+  display:flex;gap:4px;margin-bottom:20px;
+  background:#22223d;border-radius:14px;padding:4px;border:1px solid rgba(255,255,255,.05);
+}
+.tab{
+  flex:1;padding:11px;text-align:center;border:none;
+  background:none;color:rgba(255,255,255,.3);font-size:14px;font-weight:600;
+  border-radius:10px;cursor:pointer;transition:all .3s;
+}
+.tab.active{background:#2a2a55;color:#f472b6;box-shadow:0 2px 12px rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.1)}
+
+.phone-wrapper{
+  display:flex;gap:0;background:#252540;
+  border:1.5px solid rgba(255,255,255,.08);border-radius:14px;
+  overflow:hidden;transition:all .3s;
+}
+.phone-wrapper:focus-within{border-color:rgba(236,72,153,.4);background:#2a2a50;box-shadow:0 0 0 3px rgba(236,72,153,.06)}
+.phone-wrapper select{
+  padding:12px 10px 12px 14px;background:transparent;border:none;
+  color:#cbd5e1;font-size:13px;font-weight:600;outline:none;
+  min-width:95px;max-width:100px;cursor:pointer;
+  border-right:1.5px solid rgba(255,255,255,.06);
+  -webkit-appearance:none;appearance:none;
+}
+.phone-wrapper select option{background:#1e1b2e;color:#cbd5e1}
+.phone-wrapper input{
+  flex:1;padding:12px 14px;background:transparent;border:none;
+  color:#e2e8f0;font-size:14px;outline:none;letter-spacing:.5px;
+}
+.phone-wrapper input::placeholder{color:rgba(255,255,255,.2)}
+.phone-hint{font-size:11px;color:rgba(255,255,255,.2);margin-top:5px;padding-left:2px}
+
+.fg{margin-bottom:16px}
+.fg label{
+  display:block;font-size:12px;color:rgba(255,255,255,.5);
+  margin-bottom:6px;font-weight:600;letter-spacing:.3px;
+}
+.fg input,.fg select:not(.phone-wrapper select){
+  width:100%;padding:13px 14px;background:#252540;
+  border:1.5px solid rgba(255,255,255,.08);border-radius:14px;
+  color:#e2e8f0;font-size:14px;outline:none;transition:all .3s;
+}
+.fg input:focus,.fg select:not(.phone-wrapper select):focus{
+  border-color:rgba(236,72,153,.4);background:#2a2a50;
+  box-shadow:0 0 0 3px rgba(236,72,153,.06);
+}
+.fg input::placeholder{color:rgba(255,255,255,.2)}
+.fg select option{background:#1e1b2e;color:#cbd5e1}
+
+.btn{
+  width:100%;padding:14px;
+  background:#2a2a55;border:1px solid rgba(236,72,153,.2);border-radius:14px;
+  color:#fff;font-size:15px;font-weight:700;cursor:pointer;
+  text-align:center;
+  transition:all .3s cubic-bezier(.23,1,.32,1);
+}
+.btn:hover{box-shadow:0 4px 30px rgba(236,72,153,.15);transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+
+.btn2{
+  width:100%;padding:13px;
+  background:#252540;border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;color:rgba(255,255,255,.5);font-size:14px;font-weight:600;
+  cursor:pointer;text-align:center;transition:all .3s;
+}
+.btn2:hover{background:#2a2a50;color:#e2e8f0}
+
+.btn-g{
+  background:#1f5035;border:1px solid rgba(16,185,129,.2);color:#fff;
+}
+.btn-g:hover{box-shadow:0 4px 25px rgba(16,185,129,.12)}
+
+/* ====== ADMIN ====== */
+#admin{display:none;padding:20px 15px;min-height:100vh;position:relative;z-index:1}
+#admin.active{display:block}
+
+.admin-wrap{
+  border-radius:24px;padding:2px;margin-bottom:20px;
+  background:linear-gradient(135deg,rgba(236,72,153,.3),rgba(249,115,22,.15));
+}
+.admin-wrap .ah{
+  background:#1a1a2e;border-radius:22px;padding:26px 20px;text-align:center;
+  border:1px solid rgba(255,255,255,.06);
+}
+.admin-wrap .ah h2{
+  font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,#ec4899,#f472b6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:4px;
+}
+.admin-wrap .ah p{font-size:12px;color:rgba(255,255,255,.35)}
+.admin-wrap .ah .btn2{margin-top:12px}
+
+.at{
+  display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:5px;
+}
+.at button{
+  flex-shrink:0;padding:11px 20px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;
+  background:#252540;color:rgba(255,255,255,.4);
+  transition:all .3s;
+}
+.at button.act{background:#2a2a55;color:#f472b6;border-color:rgba(236,72,153,.2)}
+
+.api{
+  background:#1e1e3a;border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;padding:18px;margin-bottom:10px;
+  transition:all .3s;
+}
+.api:hover{background:#252545}
+.api .aph{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.api .aph .apnm{font-weight:700;font-size:14px;color:#e2e8f0}
+.api .aph .appl{font-size:12px;color:#f472b6}
+.api .apd{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:10px;line-height:1.5}
+.api .apimg{width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-bottom:10px;cursor:pointer}
+.api .apacts{display:flex;gap:8px}
+.api .apacts button{
+  flex:1;padding:9px;border-radius:12px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;
+}
+.api .apacts .app{background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.15)}
+.api .apacts .app:hover{background:rgba(16,185,129,.2)}
+.api .apacts .rej{background:rgba(244,63,94,.15);color:#fb7185;border:1px solid rgba(244,63,94,.15)}
+.api .apacts .rej:hover{background:rgba(244,63,94,.2)}
+
+.empty{text-align:center;padding:40px;color:rgba(255,255,255,.2);font-size:14px}
+.status-badge{display:inline-block;padding:4px 14px;border-radius:8px;font-size:11px;font-weight:600}
+.status-badge.active{background:rgba(16,185,129,.12);color:#34d399}
+.status-badge.pending{background:rgba(217,119,6,.1);color:#fbbf24}
+.status-badge.inactive{background:rgba(244,63,94,.1);color:#fb7185}
+.status-badge.completed{background:rgba(16,185,129,.12);color:#34d399}
+
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  background:#1a1a2e;border:1px solid rgba(255,255,255,.08);padding:16px 28px;
+  border-radius:18px;color:#e2e8f0;font-size:14px;
+  z-index:99999;box-shadow:0 10px 50px rgba(0,0,0,.3);
+  display:none;max-width:90%;text-align:center;
+  animation:toastSlide .35s cubic-bezier(.23,1,.32,1);
+}
+.toast.show{display:block}
+.toast.success{border-color:rgba(16,185,129,.2);color:#34d399}
+.toast.error{border-color:rgba(244,63,94,.2);color:#fb7185}
+@keyframes toastSlide{0%{transform:translateX(-50%) translateY(20px);opacity:0}100%{transform:translateX(-50%) translateY(0);opacity:1}}
+
+@keyframes fadeUp{0%{opacity:0;transform:translateY(15px)}100%{opacity:1;transform:translateY(0)}}
+.hdr-user{display:none!important}</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-particles">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="splash-rings">
+    <div class="r1"></div><div class="r2"></div><div class="r3"></div>
+    <div class="splash-center-logo">NV</div>
+  </div>
+  <div class="splash-title">Nexzen Ventures</div>
+  <div class="splash-sub">Investment Platform</div>
+  <div class="splash-bar-wrap"><div class="splash-bar"></div></div>
+  <div class="splash-load">Loading</div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Main App -->
+<div id="app">
+
+<!-- Home Header -->
+<div class="hdr-home" id="homeHeader">
+  <div class="logo-cont" id="logoBtn">
+    <div class="logo-text">NV</div>
+    <div class="logo-dots">
+      <span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span>
+    </div>
+  </div>
+  <h1>Nexzen Ventures</h1>
+  <div class="sub">Grow Your Wealth</div>
+  <div class="badge-row">
+    <span class="chip">✦ Trusted Platform</span>
+    <span class="chip">✦ 12 Plans</span>
+    <span class="chip">✦ Secure</span>
+  </div>
+</div>
+
+<!-- Dashboard Header -->
+<div class="dash-header" id="dashHeader">
+  <div class="dash-header-inner">
+    <div class="dash-header-left">
+      <div class="dh-welcome">Welcome,</div>
+      <div class="dh-name" id="dhName">User</div>
+      <div class="dh-phone"><span class="dh-phone-icon">📞</span><span id="dhPhone">+92 3XXXXXXXX</span></div>
+    </div>
+    <div class="dash-header-center">
+      <span class="dh-diamond">💎</span>
+      <div class="dh-plan-name" id="dhPlanName">Starter Plan</div>
+      <div class="dh-plan-info"><span id="dhPlanAmount">Rs. 5,400</span> &bull; <span id="dhPlanDur">60 Days</span></div>
+    </div>
+    <div class="dash-header-right">
+      <div class="dh-logout" onclick="logoutUser()" title="Logout">🚪</div>
+    </div>
+  </div>
+</div>
+
+<!-- Plan Detail Card -->
+<div class="plan-detail-card" id="planDetailCard">
+  <div class="plan-detail-card-inner">
+    <div class="pdc-icon" id="pdcIcon">💎</div>
+    <div class="pdc-name" id="pdcName">Starter Plan</div>
+    <div class="pdc-row"><span class="pdc-label">Investment</span><span class="pdc-value" id="pdcInvestment">Rs. 5,400</span></div>
+    <div class="pdc-row"><span class="pdc-label">Duration</span><span class="pdc-value" id="pdcDuration">60 Days</span></div>
+  </div>
+</div>
+
+<!-- Hidden User Header -->
+<div class="hdr-user" id="userHeader">
+  <button class="logout-top" onclick="logoutUser()">Logout</button>
+  <div class="plan-badge" id="userPlanBadge">Starter Plan</div>
+  <div class="plan-sub" id="userPlanSub">Rs. 5,400 &bull; 60 Days</div>
+</div>
+
+<!-- Home Page (Only Plans - NO Dashboard Containers) -->
+<div id="homePage">
+<div class="sec">
+  <div class="sec-header">
+    <h2>Investment Plans</h2>
+    <span class="plan-count">12 Plans</span>
+  </div>
+  <div class="row" id="row1"></div>
+  <div class="row" id="row2"></div>
+  <div class="row" id="row3"></div>
+  <div class="row" id="row4"></div>
+</div>
+</div>
+
+<!-- Dashboard (Hidden from Home Page) -->
+<div class="dash" id="dashboard">
+  <!-- Make Payment to Activate -->
+  <div class="dash-panel" data-color="green" id="payPanel">
+    <div class="dash-panel-inner pay-container" id="payContainer">
+      <div class="pay-title">Make Payment to Activate</div>
+      <div class="pay-number" onclick="copyJazzNumber()">
+        <span class="num-label">JazzCash Number</span>
+        <span class="num-value" id="jazzNumberDisplay">0322-7976921</span>
+        <span class="num-hint">Tap to copy</span>
+      </div>
+      <div class="pay-amt-info" id="payAmtInfo">Send <strong>Rs. 5,400</strong> to above JazzCash number</div>
+      <button class="pay-btn-upload" onclick="uploadPaymentProof()">Upload Payment Screenshot</button>
+      <div class="pay-status" id="payStatus" style="display:none">Payment Pending Approval</div>
+    </div>
+  </div>
+
+  <!-- Your Balance + Status -->
+  <div class="dash-panel" id="balancePanel">
+    <div class="dash-panel-inner actions-container">
+      <div class="ac-row">
+        <div class="ac-item"><span class="ac-label">Your Balance</span><div class="ac-value green" id="dashBalance">Rs. 0</div></div>
+        <div class="ac-item"><span class="ac-label">Status</span><div class="ac-value" id="dashStatusVal" style="font-size:16px">Pending</div></div>
+      </div>
+      <div class="ac-btns">
+        <button class="btn-withdraw" onclick="showWithdrawPanel()">Withdraw</button>
+        <button class="btn-tasks" onclick="scrollToTasks()">Tasks</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdraw Funds -->
+  <div class="dash-panel" data-color="coral" id="withdrawPanel">
+    <div class="dash-panel-inner withdraw-container">
+      <div class="wd-title" style="font-size:15px;font-weight:700;color:#fb7185;margin-bottom:12px;text-align:center;letter-spacing:.5px">Withdraw Funds</div>
+      <div id="wdHistoryList"></div>
+      <button class="wd-toggle-btn" id="wdToggleBtn" onclick="toggleWithdrawForm()">+ New Withdraw Request</button>
+      <div class="wd-form-inner" id="wdFormInner">
+        <div class="fg"><label>Select Method</label><select id="wdMethod"><option value="easypaisa">Easypaisa</option><option value="jazzcash">JazzCash</option></select></div>
+        <div class="fg"><label>Full Name</label><input type="text" id="wdName" placeholder="Account holder name"></div>
+        <div class="fg"><label>Account Number</label><input type="text" id="wdAccount" placeholder="03XX-XXXXXXX"></div>
+        <div class="fg"><label>Amount (Rs.)</label><input type="number" id="wdAmount" placeholder="Enter amount"></div>
+        <button class="btn" onclick="submitWithdraw()">Submit Withdraw Request</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Today's Tasks -->
+  <div class="dash-panel" data-color="teal" id="tasksPanel">
+    <div class="dash-panel-inner task-container">
+      <div class="tc-title">Today's Tasks</div>
+      <div class="tc-progress" id="taskProgress">Completed: 0 / 10</div>
+      <div id="tasksList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Auth Modal -->
+<div class="modal" id="authModal">
+  <div class="modal-wrap">
+    <div class="mb" id="authModalBox">
+      <button class="mx" onclick="closeModal('authModal')">✕</button>
+      <div class="mh" id="modalTitle">Nexzen Ventures</div>
+      <div class="tabs">
+        <button class="tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+        <button class="tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+      </div>
+      <div id="loginForm">
+        <div class="fg"><label>Full Name</label><input type="text" id="loginName" placeholder="Enter your full name"></div>
+        <div class="fg">
+          <label>Mobile Number</label>
+          <div class="phone-wrapper">
+            <select id="loginCountry" onchange="updatePhoneHint('login')">
+              <option value="+92">PK +92</option>
+              <option value="+966">SA +966</option>
+              <option value="+971">AE +971</option>
+              <option value="+974">QA +974</option>
+              <option value="+968">OM +968</option>
+            </select>
+            <input type="text" id="loginPhone" placeholder="3XXXXXXXX">
+          </div>
+          <div class="phone-hint" id="loginPhoneHint">Format: 3XXXXXXXX (10 digits)</div>
+        </div>
+        <div class="fg"><label>Password</label><input type="password" id="loginPass" placeholder="Enter password"></div>
+        <button class="btn" onclick="loginUser()">Login</button>
+      </div>
+      <div id="signupForm" style="display:none">
+        <div class="fg"><label>Full Name</label><input type="text" id="signupName" placeholder="Enter your full name"></div>
+        <div class="fg">
+          <label>Mobile Number</label>
+          <div class="phone-wrapper">
+            <select id="signupCountry" onchange="updatePhoneHint('signup')">
+              <option value="+92">PK +92</option>
+              <option value="+966">SA +966</option>
+              <option value="+971">AE +971</option>
+              <option value="+974">QA +974</option>
+              <option value="+968">OM +968</option>
+            </select>
+            <input type="text" id="signupPhone" placeholder="3XXXXXXXX">
+          </div>
+          <div class="phone-hint" id="signupPhoneHint">Format: 3XXXXXXXX (10 digits)</div>
+        </div>
+        <div class="fg"><label>Password</label><input type="password" id="signupPass" placeholder="Create password"></div>
+        <div class="fg"><label>Confirm Password</label><input type="password" id="signupConfirm" placeholder="Confirm password"></div>
+        <button class="btn" onclick="signupUser()">Create Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Login Modal -->
+<div class="modal" id="adminLoginModal">
+  <div class="modal-wrap">
+    <div class="mb">
+      <button class="mx" onclick="closeModal('adminLoginModal')">✕</button>
+      <div class="mh">Admin Login</div>
+      <div class="fg"><label>Email</label><input type="email" id="adminEmail" placeholder="Enter admin email"></div>
+      <div class="fg"><label>Password</label><input type="password" id="adminPass" placeholder="Enter admin password"></div>
+      <button class="btn" onclick="adminLogin()">Login as Admin</button>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Panel -->
+<div id="admin">
+  <div class="admin-wrap">
+    <div class="ah">
+      <h2>⚡ Admin Panel</h2>
+      <p>Nexzen Ventures &bull; Manage Users &amp; Tasks</p>
+      <button class="btn2" onclick="logoutAdmin()">Logout</button>
+    </div>
+  </div>
+  <div class="at">
+    <button class="act" onclick="switchAdminTab('users',this)">👥 Users</button>
+    <button onclick="switchAdminTab('withdrawals',this)">💸 Withdrawals</button>
+    <button onclick="switchAdminTab('payments',this)">📸 Payments</button>
+    <button onclick="switchAdminTab('tasks',this)">📋 Assign Tasks</button>
+  </div>
+  <div id="adminUsers"></div>
+  <div id="adminWithdrawals" style="display:none"></div>
+  <div id="adminPayments" style="display:none"></div>
+  <div id="adminTasks" style="display:none">
+    <div class="fg"><label>Select User</label><select id="taskUserSelect"></select></div>
+    <div class="fg"><label>Task Link/URL</label><input type="text" id="taskLink" placeholder="https://youtube.com/..."></div>
+<div class="fg"><label>Task Description</label><input type="text" id="taskDesc" placeholder="What user needs to do"></div>
+    <button class="btn btn-g" onclick="assignTask()">Assign Task</button>
+    <hr style="border-color:rgba(255,255,255,.06);margin:20px 0">
+    <h3 style="background:linear-gradient(135deg,#a5b4fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;font-size:15px">📥 Submitted Tasks (Pending)</h3>
+    <div id="submittedTasksList"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ====== COUNTRY CONFIG ======
+const COUNTRY_CONFIG = {
+  '+92':{code:'PK',hint:'3XXXXXXXX',digits:10,example:'3XXXXXXXX (10 digits)'},
+  '+966':{code:'SA',hint:'5XXXXXXXX',digits:9,example:'5XXXXXXXX (9 digits)'},
+  '+971':{code:'AE',hint:'5XXXXXXXX',digits:9,example:'5XXXXXXXX (9 digits)'},
+  '+974':{code:'QA',hint:'3XXXXXXXX',digits:8,example:'3XXXXXXXX (8 digits)'},
+  '+968':{code:'OM',hint:'9XXXXXXXX',digits:8,example:'9XXXXXXXX (8 digits)'}
+};
+function updatePhoneHint(f){
+  const s=document.getElementById(f+'Country'),h=document.getElementById(f+'PhoneHint'),i=document.getElementById(f+'Phone');
+  const c=COUNTRY_CONFIG[s.value];
+  if(c){h.textContent='Format: '+c.example;i.placeholder=c.hint;i.value='';}
+}
+
+const ACCENTS=['violet','sunset','mint','rose','violet','gold','coral','sky','emerald','pink','amber','ruby','platinum'];
+const PLAN_ICONS=['🌱','🌿','🌙','⭐','💎','🔥','👑','🚀','🌟','💼','💎','👑'];
+const PLANS=[
+  {id:1,name:"Starter Plan",amt:5400,daily:900,total:54000,dur:"60 Days"},
+  {id:2,name:"Basic Plan",amt:10420,daily:1736,total:104160,dur:"60 Days"},
+  {id:3,name:"Silver Plan",amt:20600,daily:3433,total:205980,dur:"60 Days"},
+  {id:4,name:"Gold Plan",amt:30300,daily:5050,total:303000,daily:"60 Days"},
+{id:5,name:"Diamond Plan",amt:40360,daily:6726,total:403560,dur:"60 Days"},
+  {id:6,name:"Platinum Plan",amt:53300,daily:8883,total:532980,dur:"60 Days"},
+  {id:7,name:"Royal Plan",amt:66600,daily:11100,total:666000,dur:"60 Days"},
+  {id:8,name:"Elite Plan",amt:77800,daily:15560,total:933600,dur:"60 Days"},
+  {id:9,name:"Premium Plan",amt:89400,daily:22350,total:1341000,dur:"60 Days"},
+  {id:10,name:"Executive Plan",amt:100000,daily:33333,total:1999980,dur:"60 Days"},
+  {id:11,name:"VIP Plan",amt:300000,daily:100000,total:6000000,dur:"60 Days"},
+  {id:12,name:"VVIP Plan",amt:600000,daily:300000,total:18000000,dur:"60 Days"}
+];
+const JAZZ_NUMBER="0322-7976921",ADMIN_EMAIL="admin@12.com",ADMIN_PASS="admin@12";
+
+let users=JSON.parse(localStorage.getItem('nv_users')||'[]');
+let withdrawals=JSON.parse(localStorage.getItem('nv_withdrawals')||'[]');
+let tasks=JSON.parse(localStorage.getItem('nv_tasks')||'[]');
+let payments=JSON.parse(localStorage.getItem('nv_payments')||'[]');
+let currentUser=JSON.parse(localStorage.getItem('nv_currentUser')||'null');
+
+function saveAll(){
+  localStorage.setItem('nv_users',JSON.stringify(users));
+  localStorage.setItem('nv_withdrawals',JSON.stringify(withdrawals));
+  localStorage.setItem('nv_tasks',JSON.stringify(tasks));
+  localStorage.setItem('nv_payments',JSON.stringify(payments));
+  localStorage.setItem('nv_currentUser',JSON.stringify(currentUser));
+}
+function showToast(m,t='success'){
+  const x=document.getElementById('toast');
+  x.textContent=m;x.className='toast show '+t;
+  clearTimeout(x._timer);
+  x._timer=setTimeout(()=>x.classList.remove('show'),3500);
+}
+
+// Splash
+setTimeout(()=>{
+  document.getElementById('splash').classList.add('hide');
+  setTimeout(()=>{
+    document.getElementById('app').classList.add('active');
+    if(currentUser&&currentUser.planId)showDashboard();
+    renderPlans();
+  },600);
+},3000);
+
+// Render Plans
+function renderPlans(){
+  const rows=[document.getElementById('row1'),document.getElementById('row2'),document.getElementById('row3'),document.getElementById('row4')];
+  rows.forEach(r=>r.innerHTML='');
+  PLANS.forEach((p,i)=>{
+    const ri=Math.floor(i/3),w=document.createElement('div');
+    w.className='crd-wrap';w.setAttribute('data-border',ACCENTS[i]||'violet');
+    w.onclick=()=>openAuth(p.id);
+    const ic=PLAN_ICONS[i]||'💎',bg=p.id>=11?'VIP':p.id>=9?'PREMIUM':'';
+    w.innerHTML=`<div class="crd"><div class="crd-glow"></div><div class="plan-icon">${ic}</div>${bg?`<div class="crd-badge">${bg}</div>`:''}<div class="nm">${p.name}</div><div class="invest-box"><span class="invest-label">Investment</span><div class="invest-value"><span class="invest-currency">Rs.</span> ${p.amt.toLocaleString()}</div></div><div class="info-row"><div class="icon">📈</div><div class="label">Daily</div><div class="value">Rs. ${p.daily.toLocaleString()} <span class="small">/day</span></div></div><div class="info-row"><div class="icon">💰</div><div class="label">Total</div><div class="value">Rs. ${p.total.toLocaleString()}</div></div><div class="divider"></div><div class="dur">Duration: <span>${p.dur}</span></div></div>`;
+    rows[ri].appendChild(w);
+  });
+}
+
+function openModal(id){document.getElementById(id).classList.add('active')}
+function closeModal(id){document.getElementById(id).classList.remove('active')}
+let selectedPlanId=null;
+function openAuth(pid){selectedPlanId=pid;document.getElementById('modalTitle').textContent='Plan #'+pid+' - Rs. '+PLANS[pid-1].amt.toLocaleString();openModal('authModal');}
+
+// Admin tap
+let tc=0,tt=null;
+document.getElementById('logoBtn').addEventListener('click',function(){
+  tc++;if(tt)clearTimeout(tt);
+  if(tc>=3){tc=0;document.getElementById('adminEmail').value='';document.getElementById('adminPass').value='';openModal('adminLoginModal');}
+  else{tt=setTimeout(()=>{tc=0},800);}
+});
+
+function switchAuthTab(t){
+  document.getElementById('tabLogin').className='tab'+(t==='login'?' active':'');
+  document.getElementById('tabSignup').className='tab'+(t==='signup'?' active':'');
+  document.getElementById('loginForm').style.display=t==='login'?'block':'none';
+  document.getElementById('signupForm').style.display=t==='signup'?'block':'none';
+}
+
+function signupUser(){
+  const n=document.getElementById('signupName').value.trim(),c=document.getElementById('signupCountry').value,p=document.getElementById('signupPhone').value.trim(),pw=document.getElementById('signupPass').value,cf=document.getElementById('signupConfirm').value;
+  if(!n||!p||!pw||!cf)return showToast('Please fill all fields','error');
+  if(pw!==cf)return showToast('Passwords do not match','error');
+  if(users.find(u=>u.name===n))return showToast('User already exists','error');
+  users.push({name:n,country:c,phone:p,password:pw,planId:selectedPlanId,balance:0,dailyEarned:0,totalEarned:0,status:'pending',created:Date.now(),completedTasks:[]});
+  saveAll();showToast('Account created! Send payment to JazzCash to activate.','success');closeModal('authModal');
+  setTimeout(()=>{showToast('Send Rs. '+PLANS[selectedPlanId-1].amt.toLocaleString()+' to JazzCash: '+JAZZ_NUMBER,'success');},500);
+}
+
+function loginUser(){
+  const n=document.getElementById('loginName').value.trim(),c=document.getElementById('loginCountry').value,p=document.getElementById('loginPhone').value.trim(),pw=document.getElementById('loginPass').value;
+  if(!n||!p||!pw)return showToast('Please fill all fields','error');
+  const u=users.find(x=>x.name===n&&x.phone===p&&x.password===pw);
+  if(!u)return showToast('Invalid credentials','error');
+  currentUser=u;saveAll();closeModal('authModal');showToast('Welcome '+u.name,'success');showDashboard();
+}
+
+function copyJazzNumber(){
+  navigator.clipboard.writeText(JAZZ_NUMBER).then(()=>{showToast('JazzCash number copied: '+JAZZ_NUMBER,'success');}).catch(()=>{showToast('JazzCash: '+JAZZ_NUMBER,'success');});
+}
+
+// Dashboard
+function showDashboard(){
+  document.getElementById('homePage').style.display='none';
+  document.getElementById('homeHeader').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('userHeader').style.display='none';
+  document.getElementById('admin').classList.remove('active');
+  if(!currentUser)return;
+  const u=users.find(x=>x.name===currentUser.name);
+  if(!u)return;currentUser=u;
+  const plan=PLANS.find(p=>p.id===u.planId);
+  
+  document.getElementById('dashHeader').classList.add('active');
+  document.getElementById('dhName').textContent=u.name;
+  document.getElementById('dhPhone').textContent=u.country+' '+u.phone;
+  
+  if(plan){
+    document.getElementById('dhPlanName').textContent=plan.name;
+    document.getElementById('dhPlanAmount').textContent='Rs. '+plan.amt.toLocaleString();
+    document.getElementById('dhPlanDur').textContent=plan.dur;
+    const icons=['🌱','🌿','🌙','⭐','💎','🔥','👑','🚀','🌟','💼','👑','💎'];
+    document.getElementById('pdcIcon').textContent=icons[plan.id-1]||'💎';
+    document.getElementById('pdcName').textContent=plan.name;
+    document.getElementById('pdcInvestment').textContent='Rs. '+plan.amt.toLocaleString();
+    document.getElementById('pdcDuration').textContent=plan.dur;
+    document.getElementById('planDetailCard').classList.add('active');
+    document.getElementById('userPlanBadge').textContent=plan.name;
+    document.getElementById('userPlanSub').textContent='Rs. '+plan.amt.toLocaleString()+' • '+plan.dur;
+  }
+  
+  // Show dashboard panels
+  document.querySelectorAll('.dash-panel').forEach(p=>p.style.display='block');
+  
+  const payContainer=document.getElementById('payContainer'),payStatus=document.getElementById('payStatus');
+  if(u.status==='pending'){
+    document.getElementById('payPanel').style.display='block';
+    document.getElementById('payAmtInfo').innerHTML='Send <strong>Rs. '+(plan?plan.amt.toLocaleString():'0')+'</strong> to above JazzCash number';
+    const existingPayment=payments.find(p=>p.userName===u.name);
+    if(existingPayment){payStatus.style.display='block';payStatus.className='pay-status pending';payStatus.textContent='Payment submitted - Waiting for admin approval';}
+    else{payStatus.style.display='none';}
+  }else{document.getElementById('payPanel').style.display='none';}
+  
+  document.getElementById('dashBalance').textContent='Rs. '+(u.balance||0).toLocaleString();
+  const statusEl=document.getElementById('dashStatusVal');
+  if(u.status==='active'){statusEl.textContent='Active';statusEl.style.color='#34d399';}
+  else{statusEl.textContent='Pending';statusEl.style.color='#fbbf24';}
+  renderWithdrawHistory();renderUserTasks();
+}
+
+function logoutUser(){
+  currentUser=null;localStorage.removeItem('nv_currentUser');
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('dashHeader').classList.remove('active');
+  document.getElementById('planDetailCard').classList.remove('active');
+  document.querySelectorAll('.dash-panel').forEach(p=>p.style.display='none');
+  document.getElementById('userHeader').style.display='none';
+  document.getElementById('homePage').style.display='block';
+  document.getElementById('homeHeader').style.display='block';
+  showToast('Logged out','success');
+}
+
+// Withdraw
+let wdFormVisible=false;
+function showWithdrawPanel(){document.getElementById('withdrawPanel').scrollIntoView({behavior:'smooth'});}
+function toggleWithdrawForm(){
+  wdFormVisible=!wdFormVisible;
+  document.getElementById('wdFormInner').classList.toggle('show',wdFormVisible);
+  document.getElementById('wdToggleBtn').textContent=wdFormVisible?'Close Form':'+ New Withdraw Request';
+}
+function renderWithdrawHistory(){
+  const el=document.getElementById('wdHistoryList');
+  if(!currentUser){el.innerHTML='';return;}
+  const userWDs=withdrawals.filter(w=>w.userName===currentUser.name);
+  if(!userWDs.length){el.innerHTML='<div style="text-align:center;padding:10px;color:rgba(255,255,255,.25);font-size:13px">No withdrawal requests yet</div>';return;}
+  el.innerHTML=[...userWDs].reverse().map(w=>`
+    <div class="wd-status-box">
+      <div><div class="wds-amount">Rs. ${w.amount.toLocaleString()}</div><div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px">${w.method} - ${w.date}</div></div>
+      <span class="wds-status ${w.status==='completed'?'success':'pending'}">${w.status==='completed'?'Withdrawal Successful':'Pending'}</span>
+    </div>`).join('');
+}
+function submitWithdraw(){
+  if(!currentUser)return showToast('Please login first','error');
+  const m=document.getElementById('wdMethod').value,n=document.getElementById('wdName').value.trim(),a=document.getElementById('wdAccount').value.trim(),am=parseInt(document.getElementById('wdAmount').value);
+  if(!n||!a||!am)return showToast('Fill all fields','error');
+  if(am>currentUser.balance)return showToast('Insufficient balance','error');
+  const plan=PLANS.find(p=>p.id===currentUser.planId);
+  if(plan&&am>plan.daily)return showToast('Max withdraw today: Rs. '+plan.daily.toLocaleString(),'error');
+  withdrawals.push({id:Date.now(),userName:currentUser.name,method:m,name:n,account:a,amount:am,status:'pending',date:new Date().toLocaleDateString()});
+  currentUser.balance-=am;saveAll();showToast('Withdraw request sent!');
+  document.getElementById('wdName').value='';document.getElementById('wdAccount').value='';document.getElementById('wdAmount').value='';
+  wdFormVisible=false;document.getElementById('wdFormInner').classList.remove('show');
+  document.getElementById('wdToggleBtn').textContent='+ New Withdraw Request';showDashboard();
+}
+
+// Tasks
+function scrollToTasks(){document.getElementById('tasksPanel').scrollIntoView({behavior:'smooth'});}
+function renderUserTasks(){
+  const el=document.getElementById('tasksList');
+  if(!currentUser){el.innerHTML='';return;}
+  const ut=tasks.filter(t=>t.userName===currentUser.name);
+  const cc=ut.filter(t=>t.status==='approved').length;
+  document.getElementById('taskProgress').textContent='Completed: '+cc+' / '+ut.length;
+  if(!ut.length){el.innerHTML='<div class="task-empty">No tasks assigned yet.</div>';return;}
+  let ct=ut.find(t=>t.status==='pending');
+  if(!ct)ct=ut.find(t=>t.status==='completed');
+  if(!ct){el.innerHTML='<div class="task-completed-info">All tasks completed!</div>';return;}
+  let sh='',ah='';
+  if(ct.status==='pending'){sh='<span class="task-status pending">Pending</span>';ah='<button class="task-upload-btn" onclick="completeTask('+ct.id+')">Upload Screenshot</button>';}
+  else if(ct.status==='completed'){sh='<span class="task-status submitted">Submitted - Awaiting Approval</span>';if(ct.screenshot)ah='<img class="task-screenshot" src="'+ct.screenshot+'" onclick="window.open(\''+ct.screenshot+'\')">';}
+  el.innerHTML='<div class="task-card"><div class="task-num">Task #'+(ut.indexOf(ct)+1)+' of '+ut.length+'</div><a class="task-link" href="'+ct.link+'" target="_blank">'+ct.link+'</a><div class="task-desc">'+ct.desc+'</div>'+sh+ah+'</div>'+(cc>0?'<div style="text-align:center;font-size:12px;color:rgba(255,255,255,.3);padding:8px">'+cc+' task'+(cc>1?'s':'')+' completed</div>':'');
+}
+function completeTask(id){
+  const t=tasks.find(x=>x.id===id);
+  if(!t||!currentUser)return;
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=(e)=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=(ev)=>{t.screenshot=ev.target.result;t.status='completed';saveAll();showToast('Screenshot submitted','success');renderUserTasks();};r.readAsDataURL(f);};inp.click();
+}
+function uploadPaymentProof(){
+  if(!currentUser)return showToast('Login first','error');
+  if(payments.find(p=>p.userName===currentUser.name&&p.status==='pending'))return showToast('Payment already submitted','error');
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=(e)=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=(ev)=>{payments.push({id:Date.now(),userName:currentUser.name,amount:PLANS.find(p=>p.id===currentUser.planId)?.amt||0,screenshot:ev.target.result,status:'pending'});saveAll();showToast('Payment proof sent!','success');showDashboard();};r.readAsDataURL(f);};inp.click();
+}
+
+// Admin Login
+function adminLogin(){
+  const e=document.getElementById('adminEmail').value,p=document.getElementById('adminPass').value;
+  if(e===ADMIN_EMAIL&&p===ADMIN_PASS){
+    closeModal('adminLoginModal');
+    document.getElementById('homePage').style.display='none';document.getElementById('homeHeader').style.display='none';
+    document.getElementById('dashboard').style.display='none';document.getElementById('userHeader').style.display='none';
+    document.getElementById('dashHeader').classList.remove('active');document.getElementById('planDetailCard').classList.remove('active');
+    document.getElementById('admin').classList.add('active');showToast('Welcome Admin','success');switchAdminTab('users');
+    document.getElementById('adminEmail').value='';document.getElementById('adminPass').value='';return;
+  }showToast('Invalid admin credentials','error');
+}
+function logoutAdmin(){
+  document.getElementById('admin').classList.remove('active');
+  document.getElementById('homePage').style.display='block';document.getElementById('homeHeader').style.display='block';
+  document.querySelectorAll('.dash-panel').forEach(p=>p.style.display='none');
+}
+
+// Admin Tabs
+function switchAdminTab(tab,btn){
+  document.querySelectorAll('.at button').forEach(b=>b.classList.remove('act'));
+  if(btn)btn.classList.add('act');
+  else{const b=document.querySelectorAll('.at button');if(tab==='users')b[0].classList.add('act');else if(tab==='withdrawals')b[1].classList.add('act');else if(tab==='payments')b[2].classList.add('act');else if(tab==='tasks')b[3].classList.add('act');}
+  ['adminUsers','adminWithdrawals','adminPayments','adminTasks'].forEach(s=>document.getElementById(s).style.display='none');
+  if(tab==='users'){document.getElementById('adminUsers').style.display='block';renderAdminUsers();}
+  if(tab==='withdrawals'){document.getElementById('adminWithdrawals').style.display='block';renderAdminWithdrawals();}
+  if(tab==='payments'){document.getElementById('adminPayments').style.display='block';renderAdminPayments();}
+  if(tab==='tasks'){document.getElementById('adminTasks').style.display='block';renderTaskSelect();renderSubmittedTasks();}
+}
+
+function renderAdminUsers(){
+  const el=document.getElementById('adminUsers');
+  if(!users.length){el.innerHTML='<div class="empty">No users registered</div>';return;}
+  el.innerHTML=users.map(u=>{const p=PLANS.find(p=>p.id===u.planId);const ut=tasks.filter(t=>t.userName===u.name);const cc=ut.filter(t=>t.status==='approved').length;return '<div class="api"><div class="aph"><span class="apnm">'+u.name+'</span><span class="appl">'+(p?p.name:'N/A')+'</span></div><div class="apd">'+u.country+' '+u.phone+' - Status: <span class="status-badge '+u.status+'">'+u.status+'</span> - Balance: Rs. '+(u.balance||0).toLocaleString()+' - '+cc+' tasks done</div><div class="apacts"><button class="app" onclick="approveUser(\''+u.name+'\')">Approve</button><button class="rej" onclick="rejectUser(\''+u.name+'\')">Reject</button></div></div>';}).join('');
+}
+
+function approveUser(name){
+  const u=users.find(x=>x.name===name);if(!u)return;u.status='active';
+  const p=PLANS.find(p=>p.id===u.planId);
+  if(p){for(let i=0;i<10;i++){tasks.push({id:Date.now()+i,userName:u.name,link:'#',desc:'Task '+(i+1)+': Visit the link and send screenshot',status:'pending',reward:Math.floor(p.daily/10)});}}
+  saveAll();renderAdminUsers();showToast(name+' approved & 10 tasks assigned');
+}
+function rejectUser(name){users=users.filter(x=>x.name!==name);saveAll();renderAdminUsers();showToast(name+' rejected & removed');}
+
+function renderAdminWithdrawals(){
+  const el=document.getElementById('adminWithdrawals');
+  if(!withdrawals.length){el.innerHTML='<div class="empty">No withdrawal requests</div>';return;}
+  el.innerHTML=withdrawals.map(w=>'<div class="api"><div class="aph"><span class="apnm">'+w.userName+'</span><span class="appl">'+w.method+'</span></div><div class="apd">'+w.name+' - '+w.account+' - Rs. '+w.amount.toLocaleString()+'<br>Status: <span class="status-badge '+(w.status==='completed'?'active':'pending')+'">'+w.status+'</span></div>'+(w.status==='pending'?'<div class="apacts"><button class="app" onclick="approveWithdraw('+w.id+')">Complete</button></div>':'<div style="color:#34d399;font-weight:600">Done</div>')+'</div>').join('');
+}
+function approveWithdraw(id){const w=withdrawals.find(x=>x.id===id);if(w)w.status='completed';saveAll();renderAdminWithdrawals();showToast('Withdrawal completed');}
+
+function renderAdminPayments(){
+  const el=document.getElementById('adminPayments');
+  const pending=payments.filter(p=>p.status==='pending');
+  if(!pending.length){el.innerHTML='<div class="empty">No pending payments</div>';return;}
+  el.innerHTML=pending.map(p=>'<div class="api"><div class="aph"><span class="apnm">'+p.userName+'</span><span class="appl">JazzCash</span></div><div class="apd">Rs. '+p.amount.toLocaleString()+'</div>'+(p.screenshot?'<img class="apimg" src="'+p.screenshot+'" onclick="window.open(\''+p.screenshot+'\')">':'')+'<div class="apacts"><button class="app" onclick="approvePayment('+p.id+')">Approve</button><button class="rej" onclick="rejectPayment('+p.id+')">Reject</button></div></div>').join('');
+}
+function approvePayment(id){
+  const p=payments.find(x=>x.id===id);if(!p)return;p.status='approved';
+  const u=users.find(x=>x.name===p.userName);
+  if(u){u.status='active';const pl=PLANS.find(pl=>pl.id===u.planId);if(pl){for(let i=0;i<10;i++){tasks.push({id:Date.now()+i,userName:u.name,link:'#',desc:'Task '+(i+1)+': Visit link and send screenshot',status:'pending',reward:Math.floor(pl.daily/10)});}}showToast(u.name+' activated');}
+  saveAll();renderAdminPayments();
+}
+function rejectPayment(id){payments=payments.filter(x=>x.id!==id);saveAll();renderAdminPayments();}
+
+function renderTaskSelect(){
+  const sel=document.getElementById('taskUserSelect');
+  sel.innerHTML=users.filter(u=>u.status==='active').map(u=>{const ut=tasks.filter(t=>t.userName===u.name);const cc=ut.filter(t=>t.status==='approved').length;return '<option value="'+u.name+'">'+u.name+' ('+cc+'/'+ut.length+')</option>';}).join('');
+}
+function assignTask(){
+  const un=document.getElementById('taskUserSelect').value,l=document.getElementById('taskLink').value.trim(),d=document.getElementById('taskDesc').value.trim();
+  if(!un||!l||!d)return showToast('Fill all fields','error');
+  tasks.push({id:Date.now(),userName:un,link:l,desc:d,status:'pending',reward:0});
+  saveAll();document.getElementById('taskLink').value='';document.getElementById('taskDesc').value='';
+  showToast('Task assigned','success');renderSubmittedTasks();renderTaskSelect();
+}
+function renderSubmittedTasks(){
+  const el=document.getElementById('submittedTasksList');
+  const sub=tasks.filter(t=>t.status==='completed');
+  if(!sub.length){el.innerHTML='<div class="empty">No submitted tasks</div>';return;}
+  el.innerHTML=sub.map(t=>'<div class="api"><div class="aph"><span class="apnm">'+t.userName+'</span></div><div class="apd">'+t.link+'<br>'+t.desc+'</div>'+(t.screenshot?'<img class="apimg" src="'+t.screenshot+'" style="max-height:150px">':'')+'<div class="apacts"><button class="app" onclick="approveTask('+t.id+')">Approve</button><button class="rej" onclick="rejectTask('+t.id+')">Reject</button></div></div>').join('');
+}
+function approveTask(id){
+  const t=tasks.find(x=>x.id===id);if(!t)return;t.status='approved';
+  const u=users.find(x=>x.name===t.userName);
+  if(u){const p=PLANS.find(p=>p.id===u.planId);const r=p?Math.floor(p.daily/10):0;u.balance=(u.balance||0)+r;}
+  saveAll();renderSubmittedTasks();renderTaskSelect();showToast('Task approved! Reward credited.');
+}
+function rejectTask(id){const t=tasks.find(x=>x.id===id);if(t)t.status='pending';saveAll();renderSubmittedTasks();showToast('Task rejected - resubmit allowed');}
+
+// Init
+if(currentUser)showDashboard();
+renderPlans();
+</script>
+</body>
+</html>
